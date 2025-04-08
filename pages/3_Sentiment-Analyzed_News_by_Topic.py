@@ -95,6 +95,7 @@ if selected_view == "News Sources Overview":
     ax.set_title("Average Sentiment over Time")
     ax.set_xlabel("Date")
     ax.set_ylabel("Average Sentiment")
+    plt.xticks(rotation=45)
     st.pyplot(fig)
     conn.close()
 
@@ -159,6 +160,7 @@ if selected_view == "Filter by Topic":
                 ax.set_title("Sentiment over Time")
                 ax.set_xlabel("Date")
                 ax.set_ylabel("Sentiment")
+                plt.xticks(rotation=45)
                 st.pyplot(fig)
 
         else:
