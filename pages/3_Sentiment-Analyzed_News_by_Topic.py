@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import duckdb
-import subprocess
 
 
 st.title("Sentiment-Analyzed News by Topic")
@@ -168,7 +167,6 @@ if selected_view == "Filter by Topic":
 
 if selected_view == "Update News":
     from news.news_backend import get_rss_feeds, get_links, get_sentiment_from_text, clear_database, clear_RSS_feeds, progressbar, add_content, add_sentiment
-    import newspaper
     st.markdown(
         """
     You can update the news articles by clicking the button below. This will fetch the latest news articles from the predefined RSS feeds and store them in the database.
