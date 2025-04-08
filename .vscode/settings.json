@@ -1,0 +1,12 @@
+{
+    "dbcode.connections": [
+        {
+            "connectionId": "4vUC1FfHh8MRI78lDcatp",
+            "name": "news.db",
+            "driver": "duckdb",
+            "socket": "Portfolio/news/news.db",
+            "readOnly": false,
+            "connectionType": "socket"
+        }
+    ]
+}
