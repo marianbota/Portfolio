@@ -66,7 +66,13 @@ if selected_view == "News Sources Overview":
     """
     )
     fig, ax = plt.subplots()
-    sns.barplot(x="subjectivity", y="source", data=df, ax=ax, order=df.sort_values("subjectivity")["source"])
+    sns.barplot(
+        x="subjectivity",
+        y="source",
+        data=df,
+        ax=ax,
+        order=df.sort_values("subjectivity")["source"],
+    )
     ax.set_title("Average Subjectivity by Source")
     ax.set_xlabel("Average Subjectivity")
     ax.set_ylabel("Source")
@@ -168,10 +174,24 @@ if selected_view == "Filter by Topic":
 
 
 if selected_view == "Update News":
-    from news.news_backend import get_rss_feeds, get_links, get_sentiment_from_text, clear_database, clear_RSS_feeds, progressbar, add_content, add_sentiment
+    from news.news_backend import (
+        get_rss_feeds,
+        get_links,
+        get_sentiment_from_text,
+        clear_database,
+        clear_RSS_feeds,
+        progressbar,
+        add_content,
+        add_sentiment,
+    )
+
     st.markdown(
         """
-    You can update the news articles by clicking the button below. This will fetch the latest news articles from the predefined RSS feeds and store them in the database.
+    You can update the news articles by clicking the button below. This will fetch the latest news articles from the predefined RSS feeds and store them in the database.\
+    
+    **Caution:**
+
+    This takes a long time, more than 5 minutes to run so I recommend exploring the rest of the project first as the results can be skewed while the update is running.
     """
     )
 
