@@ -189,8 +189,8 @@ if selected_view == "Update News":
         """
     You can update the news articles by clicking the button below. This will fetch the latest news articles from the predefined RSS feeds and store them in the database.\
     
-    **Caution:**
 
+    **Caution:**
     This takes a long time, more than 5 minutes to run so I recommend exploring the rest of the project first as the results can be skewed while the update is running.
     """
     )
