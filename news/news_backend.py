@@ -2,6 +2,7 @@ import feedparser
 import json
 import duckdb
 import newspaper
+import os
 
 from datetime import datetime
 from time import mktime
@@ -27,10 +28,13 @@ def get_rss_feeds():
     """
     )
     for source, feed in RSS_Feeds.items():
-        print(f"Processing {source}")
+
+        os.write(f"Processing {source}")
+        # print(f"Processing {source}")
         d = feedparser.parse(feed)
         for entry in d.entries:
-            print(f"--------Processing {entry.title}")
+            os.write(f"--------Processing {entry.title}")
+            # print(f"--------Processing {entry.title}")
             try:
                 title = entry.title
                 link = entry.link
@@ -45,7 +49,8 @@ def get_rss_feeds():
                     (title, link, published, source),
                 )
             except Exception as e:
-                print(f"Error processing {source}: {e}")
+                os.write(f"Error processing {source}: {e}")
+                # print(f"Error processing {source}: {e}")
 
                 continue
     conn.commit()
@@ -108,7 +113,8 @@ def get_links():
             add_content(link[0], article.text)
             add_sentiment(link[0], article.text)
         except:
-            print(f"Error processing {link[0]}")
+            os.write(f"Error processing {link[0]}")
+            # print(f"Error processing {link[0]}")
             continue
         progressbar(links.index(link), len(links), 30, "■")
 
@@ -172,7 +178,8 @@ def progressbar(current_value, total_value, bar_lengh, progress_char):
     loadbar = "Progress: [{:{len}}]{}%".format(
         progress * progress_char, percentage, len=bar_lengh
     )  # Progress Bar String
-    print(loadbar, end="\r")  # Progress Bar Output
+    os.write(loadbar, end="\r")
+    # print(loadbar, end="\r")  # Progress Bar Output
 
 
 if __name__ == "__main__":
